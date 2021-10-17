@@ -6,14 +6,13 @@ x0=2; %方程初值
 y0=0;
 
 for i=1:2
-h=h*i;%变步长
-result=Euler(a,b,h,x0,y0);
-x=result(1,:);
-y=result(2,:);
-t=result(3,:);
-plot(t,x);
-hold on;%在同一张图绘制曲线
-
+    h=h*i;%变步长
+    result=Euler(a,b,h,x0,y0);
+    x=result(1,:);
+    y=result(2,:);
+    t=result(3,:);
+    plot(t,x);
+    hold on;%在同一张图绘制曲线
 end
 h=get(gca,'children');
 set(h(1),'color','red'); %使第一条曲线变为红色
