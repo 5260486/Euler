@@ -62,13 +62,14 @@ function result = calculate1(x0,y0,h2)
     y1=y0+h2*func2(x0,y0);
     while now <=acc
         y1=y0+h2*func2(x0,y1);
+        y0=y1;
         now =abs(log10(abs(y1-y0)));   
         iter=iter+1;
         if iter>5
             break;
         end
     end         
-    result = y1;
+    result = y0;
 end
 
 function result = calculate2(x0,y0,h1)
@@ -78,11 +79,12 @@ function result = calculate2(x0,y0,h1)
     x1=x0+h1*func1(x0,y0);
     while now <=acc
         x1=x0+h1*func1(x1,y0);
+        x0=x1;
         now =abs(log10(abs(x1-x0)));   
         iter=iter+1;
         if iter>5
             break;
         end
     end         
-    result = x1;
+    result = x0;
 end
