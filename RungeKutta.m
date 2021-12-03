@@ -32,7 +32,7 @@ end
 
 
 %% 龙哥库塔，二阶/改进欧拉
-function result=ExchangedEuler(a,b,h,x0,y0)
+function result=Runge2(a,b,h,x0,y0)
     n=(b-a)/h;
     X=x0;
     Y=y0;
@@ -63,17 +63,17 @@ function result=Multirate(a,b,h1,h2,x0,y0)
     X=x0;
     Y=y0;
     H=0;
-        for i=1:n1           
+        for i=1:n1           %x变化
 
-            for j=1:d                
+            for j=1:d                %y变化
                 k12=h2*func2(x0,y0);                          
-                k22=h2*func2(x0+h2,y0+k12);               
+                k22=h2*func2(x0,y0+k12);               
                 y1=y0+0.5*(k12+k22);
                 y0=y1;
                 Y(end+1)=y0;
             end
             k11=h1*func1(x0,y0);            
-            k21=h1*func1(x0+h1,y0+k12);   
+            k21=h1*func1(x0+h1,y0);   
             x1=x0+0.5*(k11+k21);
             x0=x1;          
             X(end+1)=x0;           
